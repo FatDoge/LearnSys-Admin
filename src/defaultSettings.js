@@ -7,9 +7,9 @@ module.exports = {
   autoHideHeader: false, // auto hide header
   fixSiderbar: false, // sticky siderbar
   menu: {
-    disableLocal: false,
+    disableLocal: true,
   },
-  title: 'Ant Design Pro',
+  title: 'LearnSysAdmin',
   pwa: false,
   // Your custom iconfont Symbol script Url
   // eg：//at.alicdn.com/t/font_1039637_btcrd5co4w.js

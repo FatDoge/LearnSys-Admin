@@ -143,6 +143,18 @@ export default [
         ],
       },
       {
+        path: '/upload',
+        name: '上传视频',
+        icon: 'upload',
+        component: './Upload/Upload',
+      },
+      {
+        path: '/lessons',
+        name: '管理课程',
+        icon: 'book',
+        component: './ManageLesson/List'
+      },
+      {
         path: '/profile',
         name: 'profile',
         icon: 'profile',

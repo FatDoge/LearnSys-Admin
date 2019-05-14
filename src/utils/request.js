@@ -66,7 +66,15 @@ const errorHandler = error => {
  */
 const request = extend({
   errorHandler, // 默认错误处理
-  credentials: 'include', // 默认请求是否带上cookie
+  credentials: 'include', // 默认请求是否带上cookie, 包含为'include'
+});
+
+/**
+ * 七牛云上传需防止cookie携带带来的option cors问题
+ */
+export const qiniuRequest = extend({
+  errorHandler, // 默认错误处理
+  credentials: 'omit', // 默认请求是否带上cookie, 包含为'include'
 });
 
 export default request;

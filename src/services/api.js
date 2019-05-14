@@ -1,5 +1,6 @@
 import { stringify } from 'qs';
-import request from '@/utils/request';
+import request, { qiniuRequest } from '@/utils/request';
+import { API_URL,qiniuBucket, qiniuUploadServer } from '@/utils/constant';
 
 export async function queryProjectNotice() {
   return request('/api/project/notice');
@@ -103,13 +104,6 @@ export async function updateFakeList(params) {
   });
 }
 
-export async function fakeAccountLogin(params) {
-  return request('/api/login/account', {
-    method: 'POST',
-    data: params,
-  });
-}
-
 export async function fakeRegister(params) {
   return request('/api/register', {
     method: 'POST',
@@ -123,4 +117,62 @@ export async function queryNotices(params = {}) {
 
 export async function getFakeCaptcha(mobile) {
   return request(`/api/captcha?mobile=${mobile}`);
+}
+
+/*
+* 上传文件 0|文件存储 1|图片存储 2|视频存储 3|音频存储
+* @mock http://f2e.dxy.net/mock-api/client/59805e6c5b5f7509a7bbe794
+* */
+export async function uploadFileI(params) {
+  const formData = new FormData();
+  Object.entries(params).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+  return qiniuRequest(qiniuUploadServer, {
+    method: 'POST',
+    body: formData,
+  }).then(res => `${qiniuBucket}/${res.hash}`);
+}
+
+/*
+* 获取七牛云上传文件授权token
+* @author fatdoge
+* */
+export async function queryUploadToken() {
+  return request(`${API_URL}/token`, {
+    method: 'POST'
+  }).then(res => res.results);
+}
+
+/*
+* 登录接口
+* @author fatdoge
+* */
+export async function accountLogin(params) {
+  return request(`${API_URL}/login`, {
+    method: 'POST',
+    data: params,
+  }).then(res => res);
+}
+
+/*
+* 登出接口
+* @author fatdoge
+* */
+export async function accountLogout(params) {
+  return request(`${API_URL}/logout`, {
+    method: 'POST',
+    data: params,
+  }).then(res => res);
+}
+
+/*
+* 上传课程接口，前置需拿到七牛云返回的视频地址
+* @author fatdoge
+* */
+export async function uploadLesson(params) {
+  return request(`${API_URL}/uploadLesson`, {
+    method: 'POST',
+    data: params,
+  }).then(res => res);
 }

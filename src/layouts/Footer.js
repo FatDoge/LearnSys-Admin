@@ -8,27 +8,27 @@ const FooterView = () => (
     <GlobalFooter
       links={[
         {
-          key: 'Pro 首页',
-          title: 'Pro 首页',
-          href: 'https://pro.ant.design',
+          key: '博客',
+          title: '博客',
+          href: 'https://fatdoge.cn',
           blankTarget: true,
         },
         {
-          key: 'github',
+          key: 'Github',
           title: <Icon type="github" />,
-          href: 'https://github.com/ant-design/ant-design-pro',
+          href: 'https://github.com/fatdoge',
           blankTarget: true,
         },
         {
-          key: 'Ant Design',
-          title: 'Ant Design',
-          href: 'https://ant.design',
+          key: '论坛',
+          title: 'BBS',
+          href: 'https://bbs.fatdoge.cn',
           blankTarget: true,
         },
       ]}
       copyright={
         <Fragment>
-          Copyright <Icon type="copyright" /> 2019 蚂蚁金服体验技术部出品
+          Copyright <Icon type="copyright" /> 2019 Fatdoge
         </Fragment>
       }
     />
