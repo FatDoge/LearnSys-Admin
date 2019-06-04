@@ -120,8 +120,8 @@ export async function getFakeCaptcha(mobile) {
 }
 
 /*
-* 上传文件 0|文件存储 1|图片存储 2|视频存储 3|音频存储
-* @mock http://f2e.dxy.net/mock-api/client/59805e6c5b5f7509a7bbe794
+* 客户端直传七牛云视频文件
+* @author fatdoge 
 * */
 export async function uploadFileI(params) {
   const formData = new FormData();

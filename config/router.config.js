@@ -54,6 +54,12 @@ export default [
         component: './Upload/Upload',
       },
       {
+        path: '/types',
+        name: '管理类别',
+        icon: 'diff',
+        component: './ManageType/List'
+      },
+      {
         path: '/lessons',
         name: '管理课程',
         icon: 'book',

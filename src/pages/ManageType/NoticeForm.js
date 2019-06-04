@@ -1,14 +1,13 @@
 import React from 'react';
-import { Form, Button, Input, Divider, Select } from 'antd';
+import { Form, Button, Input, Divider } from 'antd';
 import { connect } from 'dva';
 import { rules } from '@/utils/constant';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
-const { Option } = Select;
 
-@connect(({ notice }) => ({
-  notice,
+@connect(({ type }) => ({
+  type,
 }))
 class NoticeForm extends React.Component {
   static defaultProps = {
@@ -34,7 +33,6 @@ class NoticeForm extends React.Component {
 
   render() {
     const { form: { getFieldDecorator }, detail } = this.props;
-    const { typelist = [] } = detail;
 
     return (
       <Form
@@ -43,34 +41,13 @@ class NoticeForm extends React.Component {
         }}
         autoComplete="off"
       >
-        <FormItem label="课程名称">
-          {getFieldDecorator('classname', {
+        <FormItem label="类别名称">
+          {getFieldDecorator('typename', {
             rules,
-            initialValue: detail.classname,
-          })(<Input placeholder="请输入课程名称" />)}
+            initialValue: detail.typename,
+          })(<Input placeholder="请输入类别名称" />)}
         </FormItem>
-        <FormItem label="课程简介">
-          {getFieldDecorator('classdetail', {
-            rules,
-            initialValue: detail.classdetail,
-          })(<TextArea rows={4} placeholder="50字以内" />)}
-        </FormItem>
-        <FormItem label="选择类别">
-          {getFieldDecorator('typeid', {
-            rules,
-            initialValue: detail.typeid,
-          })(
-            <Select
-              placeholder="请选择类型"
-            >
-              {typelist.map(d => (
-                <Option key={d.id} value={d.id}>
-                  {d.typename}
-                </Option>
-              ))}
-            </Select>
-          )}
-        </FormItem>
+
         <FormItem type="submit">
           <Button type="primary" htmlType="submit">
             确定
