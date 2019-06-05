@@ -28,7 +28,7 @@ class EditorDemo extends React.Component {
     if(path.split('/').includes('update')) {
       const res = await fetchCurrentArticle(params);
       console.log(res)
-      // 使用BraftEditor.createEditorState将html字符串转换为编辑器需要的editorStat
+      // 使用BraftEditor.createEditorState将html字符串转换为编辑器需要的editorState
       this.props.form.setFieldsValue({
         content: BraftEditor.createEditorState(res.content),
         title: res.title,
